@@ -1,0 +1,100 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<iostream>
+
+using namespace std;
+class Array
+{
+	private:
+		int *A;
+		int size;
+		int length;
+	public:
+		Array()
+		{
+			 size=10;
+			 length=0;
+			 A=new int[size];
+		 }
+		 Array(int sz,int l)
+		 {
+			 size=sz;
+			 length=l;
+			 A=new int[size];
+			 for(int i=0;i<l;i++)
+				{
+					cout << "Enter element " << i + 1 << ": ";
+			        cin >> A[i];
+					
+				}
+		}
+		void missing();
+		void Hmissing();
+	
+		 ~Array()
+		 {
+			 delete []A;
+		 }
+};
+void Array::missing()
+		{
+			int l=A[0];
+			int h=A[length-1];
+			int diff=A[0]-0;
+			
+			for(int i=0;i<length;i++)
+			{
+				
+				if(A[i]-i!=diff)
+				{
+						cout<<"missing element is "<<i+diff<<endl;
+				        diff++;
+				}
+				
+			}
+		}
+		
+void Array::Hmissing()
+{
+	int h=A[0];
+	int i;
+	for(i=1;i<length;i++)
+		{
+			if(A[i]>h)
+			h=A[i];
+		}
+		
+		int H[h];
+		for(i=0;i<h;i++)
+		{
+			H[i]=0;
+		}
+		
+		for(i=0;i<length;i++)
+		{
+			H[A[i]]++;
+		}
+		
+		cout<<"missing elements are"<<endl;
+		for(i=1;i<h;i++)
+		{
+			if(H[i]==0)
+			cout<<i<<endl;
+		}
+	
+}
+
+int main()
+{
+	int sz,l;
+	cout<<"enter the array size"<<endl;
+	cin>>sz;
+	cout<<"enter the array length"<<endl;
+	cin>>l;
+	Array arr(sz,l);	
+	arr.Hmissing();
+		
+	
+
+  return 0;
+}
