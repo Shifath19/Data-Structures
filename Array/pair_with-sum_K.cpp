@@ -28,12 +28,39 @@ class Array
 		}
 		
 		void Ksum(int k);
+		void Ksum_sorted(int k);
 		
 		~Array()
 		 {
 			 delete []A;
 		 }
 };
+
+
+void Array::Ksum_sorted(int k)								// PAIR WITH SUM K IN SORTED ARRAY
+{
+	int i,j;
+	i=0;
+	j=length-1;
+	
+	while(i<j)
+	{
+		if(A[i]+A[j]==k)
+		{
+			cout<<A[i]<<" + "<<A[j]<<" = "<<k<<endl;
+			i++;
+			j--;
+		}
+		
+		else if(A[i]+A[j]<k)
+		{
+			i++;
+		}
+		
+		else
+			j--;
+	}	
+}
 
 void Array::Ksum(int k){
 	
@@ -69,9 +96,9 @@ int main()
 	cout<<"enter the array length"<<endl;
 	cin>>l;
 	Array arr(sz,l);	
-	//arr.Sduplicates();
-	//arr.duplicates();
+	
 	arr.Ksum(10);
+	// arr.Ksum_sorted(9);    // sorted Array
 		
 	
 
