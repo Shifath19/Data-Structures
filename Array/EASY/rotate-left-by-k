@@ -1,0 +1,21 @@
+vector<int> rotateArray(vector<int>arr, int k) {
+    // Write your code here.
+    int i,temp[k],n=sizeof(arr);
+   k=k%n;
+    for(i=0;i<k;i++)
+    {
+        temp[i]=arr[i];   //storing first k elements in temp
+    }
+
+    for(i=k;i<n;i++)
+    {
+        arr[i-k]=arr[i];    //move ele from k index to i-k indexs
+    }
+
+    for(i=n-k;i<n;i++)
+    {
+        arr[i]=temp[i-(n-k)];   //adding temp elements to array
+    }
+
+    return arr;
+}
