@@ -1,0 +1,54 @@
+vector < int > sortedArray(vector < int > a, vector < int > b) 
+{
+    // Write your code here
+
+    int i=0,j=0;
+    int n=a.size();
+    int m=b.size();
+    vector < int > c;
+
+    while(i<n && j<m)
+    {
+        if(a[i]<b[j])
+        {
+          if(a[i] != c.back()) {
+            c.push_back(a[i]);
+            i++;
+          }
+        }
+        else if(a[i]>b[j])
+        {
+            if(b[j]!=c.back()){
+            c.push_back(b[j]);
+            j++;
+            }
+            
+        }
+        else if(a[i]==b[j])
+        {
+            if (b[j] != c.back()) {
+            c.push_back(b[j]);
+            i++;
+            j++;
+            }
+        }
+    }
+    for(;i<n;i++)
+    {
+        c.push_back(a[i]);
+    }
+
+    for(;j<m;j++)
+    {
+        c.push_back(b[j]);
+    }
+
+    return c;
+}
+
+
+
+
+
+
+
